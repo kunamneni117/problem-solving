@@ -13,20 +13,15 @@ class Solution:
         return len(nums)
 
     def searchInsert(self,nums:List[int],target:int) -> int:
-        start:int=0
-        end:int=len(nums)
-        
-        if target <= nums[0]:
-            return 0
-        while(start<end):
-            mid:int=(start+end)//2
-            if nums[mid]==target:
-                return mid
-            elif nums[mid] < target:
-                start=mid+1
+        l=0
+        r=len(nums)
+        while(l<r):
+            mid=(l+r)//2
+            if(nums[mid]>=target):
+                r=mid
             else:
-                end=mid
-        return start
+                l=mid+1
+        return l
 
 
                 

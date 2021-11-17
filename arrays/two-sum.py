@@ -15,7 +15,11 @@ class Solution:
             while(start<end):
                 if nums[start]+nums[end]==target:
                     if nums[start]==nums[end]:
-                        return [position_array.index(nums[start]),position_array.index(nums[end])+1] 
+                        res=[]
+                        for idx, val in enumerate(position_array):
+                            if nums[start]== val:
+                                res.append(idx)
+                        return res
                     else:
                         return [position_array.index(nums[start]),position_array.index(nums[end])]
                 elif nums[start]+nums[end]>target:
@@ -25,3 +29,7 @@ class Solution:
 
         else:
             return None
+
+nums=[3,2,3]
+sol=Solution()
+print(sol.twoSum(nums=nums,target=6))

@@ -37,3 +37,11 @@ class Solution:
             subtract=target-nums[i]
             if subtract in temp and temp[subtract]!=i:
                 return [i,temp[subtract]]
+
+    def twoSum_optimized_n(self,nums:List[int],target:int) -> Optional[List[int]]:
+        temp={}
+        for i in range(len(nums)):
+            if target-nums[i] in temp:
+                return [temp[target-nums[i]],i]
+            else:
+                temp[nums[i]]=i

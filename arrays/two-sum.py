@@ -1,12 +1,13 @@
 from typing import List,Optional
 class Solution:
-    def twoSumBruteforce(self, nums: List[int], target: int) -> Optional[List[int]]:
+    def twoSumBruteforce_n2(self, nums: List[int], target: int) -> Optional[List[int]]:
         for i in range(len(nums)):
             for j in range(i+1,len(nums)):
                 if target-nums[i]==nums[j]:
                     return [i,j]
         return None
-    def twoSum(self,nums: List[int],target:int) -> Optional[List[int]]:
+
+    def twoSum_nlogn(self,nums: List[int],target:int) -> Optional[List[int]]:
         position_array=nums
         if len(nums) and len(nums)>1:
             nums=sorted(nums)
@@ -30,6 +31,9 @@ class Solution:
         else:
             return None
 
-nums=[3,2,3]
-sol=Solution()
-print(sol.twoSum(nums=nums,target=6))
+    def twoSum_n(self,nums: List[int],target: int)-> Optional[List[int]]:
+        temp={value:id for id,value in enumerate(nums)}
+        for i in range(len(nums)):
+            subtract=target-nums[i]
+            if subtract in temp and temp[subtract]!=i:
+                return [i,temp[subtract]]

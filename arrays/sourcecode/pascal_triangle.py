@@ -24,3 +24,16 @@ class solution:
                 dp[i][j]=dp[i-1][j]+dp[i-1][j-1]
         
         return dp
+
+    def generate_optimized1(self, numRows: int) -> List[List[int]]:
+        res = []
+        for i in range(numRows):
+		#fill in all the 1s
+            res.append([1] * (i + 1))
+        if numRows < 3:
+            return res
+        for i in range(2, numRows):
+            for j in range(1, i):
+			#fill in middle nums
+                res[i][j] = res[i - 1][j - 1] + res[i - 1][j]
+        return res
